@@ -1,16 +1,17 @@
 /*
  * @Author: your name
  * @Date: 2021-11-16 17:22:46
- * @LastEditTime: 2021-11-16 21:42:49
+ * @LastEditTime: 2021-11-17 17:22:21
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \后台管理\vue_shop\src\router\index.js
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../components/Login'
-import Home from '../components/Home'
-
+import Login from '../pages/Login'
+import Home from '../pages/Home'
+import Welcome from '../components/Welcome'
+import User from '../components/user/User'
 Vue.use(VueRouter)
 
 const routes = [
@@ -24,8 +25,20 @@ const routes = [
   },
   {
     path:'/home',
-    component:Home
-  }
+    component:Home,
+    // redirect:'/welcome',
+    children:[
+      {
+        path:'',
+        component:Welcome
+      },
+      {
+        path:'/users',
+        component:User
+      }
+    ]
+  },
+  
 ]
 
 const router = new VueRouter({

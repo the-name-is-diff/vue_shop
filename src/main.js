@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-16 17:22:46
- * @LastEditTime: 2021-11-16 21:06:13
+ * @LastEditTime: 2021-11-17 11:40:46
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \后台管理\vue_shop\src\main.js
@@ -18,6 +18,10 @@ import './css/global.css'
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+axios.interceptors.request.use(config=>{
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
 Vue.prototype.$http = axios
 
 

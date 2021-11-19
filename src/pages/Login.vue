@@ -1,14 +1,14 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-16 19:03:34
- * @LastEditTime: 2021-11-16 21:32:48
+ * @LastEditTime: 2021-11-17 08:18:47
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \后台管理\vue_shop\src\components\Login.vue
 -->
 <template>
   <div class="login_container">
-    <div class="login_box">
+    <div class="login_box animate__animated animate__fadeInDown">
       <h2>用户登录</h2>
       <el-form
        ref="form" 
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+  import 'animate.css'
 export default {
   data() {
     return {
