@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-16 21:33:46
- * @LastEditTime: 2021-11-19 08:37:09
+ * @LastEditTime: 2021-11-21 11:29:03
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \后台管理\vue_shop\src\components\Home.vue
@@ -31,6 +31,7 @@
 <script>
   import AsideNav from '../components/AsideNav.vue'
   import Breadcrumb from '../components/Breadcrumb.vue'
+  import Roles from '../components/roles/Roles.vue'
 export default {
   data() {
     return {
@@ -57,7 +58,8 @@ export default {
   },
   components:{
     AsideNav,
-    Breadcrumb
+    Breadcrumb,
+    Roles
   }
 }
 </script>

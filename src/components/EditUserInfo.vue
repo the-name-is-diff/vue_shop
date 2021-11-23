@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-18 17:39:51
- * @LastEditTime: 2021-11-19 09:15:37
+ * @LastEditTime: 2021-11-23 16:27:45
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \后台管理\vue_shop\src\components\EditUserInfo.vue
@@ -112,13 +112,13 @@ export default {
       this.$emit("changeEdit", this.cEditDialogVisible);
     },
     editResetForm(){
-      // this.$refs.editUserFormRef.resetFields();
+      this.$refs.editUserFormRef.resetFields();
+      this.$emit('changeEdit',this.cEditDialogVisible)
     }
   },
   watch:{
     editUserForm(newValue){
       this.cEditUserForm = newValue
-      console.log("这里是变化的",this.cEditUserForm);
     },
     editDialogVisible(newValue){
       this.cEditDialogVisible = newValue

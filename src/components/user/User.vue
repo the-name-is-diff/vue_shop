@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-17 17:21:49
- * @LastEditTime: 2021-11-19 09:26:24
+ * @LastEditTime: 2021-11-23 16:44:30
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \后台管理\vue_shop\src\components\user\User.vue
@@ -64,7 +64,11 @@
               placement="top"
               :enterable="false"
             >
-              <el-button type="danger" icon="el-icon-delete" @click="searchUser1(scope.row.id)"></el-button>
+              <el-button
+                type="danger"
+                icon="el-icon-delete"
+                @click="searchUser1(scope.row.id)"
+              ></el-button>
             </el-tooltip>
             <el-tooltip
               class="item"
@@ -73,7 +77,11 @@
               placement="top"
               :enterable="false"
             >
-              <el-button type="warning" icon="el-icon-s-tools"></el-button>
+              <el-button
+                type="warning"
+                icon="el-icon-s-tools"
+                @click="setUserRole(scope.row.id)"
+              ></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -136,13 +144,13 @@
       title="提示"
       :visible.sync="deleteDialogVisible"
       width="30%"
-      :modal-append-to-body='false'
-       v-if="editUserForm!==null"
+      :modal-append-to-body="false"
+      v-if="editUserForm !== null"
     >
       <span>
-          <span>用户名:</span>
-          <h3>{{editUserForm.username}}</h3>
-          <p>是否删除用户"{{editUserForm.username}}"</p>
+        <span>用户名:</span>
+        <h3>{{ editUserForm.username }}</h3>
+        <p>是否删除用户"{{ editUserForm.username }}"</p>
       </span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="deleteDialogVisible = false">取 消</el-button>
@@ -150,6 +158,42 @@
           >确 定</el-button
         >
       </span>
+    </el-dialog>
+    <!-- 设置用户角色 -->
+    <el-dialog
+      title="设置用户角色"
+      :visible.sync="setRoleDialogVisible"
+      :modal-append-to-body="false"
+      v-if="editUserForm !== null"
+    >
+      <div slot="footer" class="dialog-footer">
+        <el-form
+          label-width="80px"
+        >
+          <el-form-item label="用户名">
+            <el-input v-model="editUserForm.username" disabled></el-input>
+          </el-form-item>
+          <el-form-item label="角色名">
+            <el-input v-model="editUserForm.rid" disabled></el-input>
+          </el-form-item>
+        
+        <el-form-item>
+          <el-select v-model="currentCheckedRole" placeholder="请选择">
+          <el-option
+            v-for="item in rolesList"
+            :key="item.id"
+            :label="item.roleName"
+            :value="item.id"
+          >
+          </el-option>
+        </el-select>
+        </el-form-item>
+        </el-form>
+        <el-button @click="setRoleDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="ensureRole(editUserForm.id,currentCheckedRole)"
+          >确 定</el-button
+        >
+      </div>
     </el-dialog>
   </div>
 </template>
@@ -185,7 +229,8 @@ export default {
       userInfo: null,
       dialogVisible: false,
       editDialogVisible: false,
-      deleteDialogVisible:false,
+      deleteDialogVisible: false,
+      setRoleDialogVisible: false,
       addUserForm: {
         username: "",
         password: "",
@@ -193,6 +238,8 @@ export default {
         mobile: "",
       },
       editUserForm: null,
+      rolesList:null,
+      currentCheckedRole:null,
       // 防暴力点击flag
       defense: 0,
       rules: {
@@ -243,11 +290,9 @@ export default {
     },
     setPageNum(value) {
       this.queryInfo.pagenum = value;
-      console.log("这里是父组件");
     },
     setPageSize(value) {
       this.queryInfo.pagesize = value;
-      console.log("这里是父组件123123");
     },
     async userStateChanged(userInfo) {
       const { data } = await this.$http.put(
@@ -330,25 +375,43 @@ export default {
       this.editDialogVisible = false;
       this.getUsersList();
     },
-    async deleteUser(id){
-      const {data} = await this.$http.delete('users/'+id,{
-        id
-      })
-        this.deleteDialogVisible = false
-      if(data.meta.status ===200){
+    async deleteUser(id) {
+      const { data } = await this.$http.delete("users/" + id, {
+        id,
+      });
+      this.deleteDialogVisible = false;
+      if (data.meta.status === 200) {
         this.$message({
-          type:'success',
-          message:'删除用户成功'
-        })
-        this.getUsersList()
+          type: "success",
+          message: "删除用户成功",
+        });
+        this.getUsersList();
+      } else {
+        this.$message.error("删除用户失败");
       }
-      else{
-        this.$message.error('删除用户失败')
-      }
+    },
+    async setUserRole(id) {
+      this.setRoleDialogVisible = true;
+      const { data } = await this.$http.get(`users/${id}`, id);
+      this.editUserForm = data.data;
+    },
+    async getRoleList(){
+      const {data} = await this.$http.get('roles');
+      this.rolesList = data.data;
+    },
+    async ensureRole(id,rid){
+      console.log(id);
+      console.log(rid);
+      this.setRoleDialogVisible = false
+      const {data} = await this.$http.put(`users/${id}/role`,{
+        rid:parseInt(rid)
+      })
+      console.log(data);
     }
   },
   created() {
     this.getUsersList();
+    this.getRoleList();
   },
   components: {
     Pagination,
