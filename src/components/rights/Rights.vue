@@ -1,13 +1,17 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-19 10:38:42
- * @LastEditTime: 2021-11-21 12:11:46
+ * @LastEditTime: 2021-11-23 20:25:28
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \后台管理\vue_shop\src\components\rights\Rights.vue
 -->
 <template>
   <div class="rights" v-if="rightsList !== null">
+    <breadcrumb>
+      <span slot="first">权限管理</span>
+      <span slot="second">权限列表</span>
+     </breadcrumb>
     <el-card class="box-card">
       <el-table :data="rightsList.data" style="width: 100%" border>
         <el-table-column type="index" width="80%"></el-table-column>
@@ -28,7 +32,11 @@
 </template>
 
 <script>
+import Breadcrumb from '../Breadcrumb.vue'
 export default {
+  components:{
+    Breadcrumb
+  },
   data() {
     return {
       rightsList: [],

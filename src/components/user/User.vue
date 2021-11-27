@@ -1,13 +1,17 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-17 17:21:49
- * @LastEditTime: 2021-11-23 16:44:30
+ * @LastEditTime: 2021-11-23 20:21:05
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \后台管理\vue_shop\src\components\user\User.vue
 -->
 <template>
   <div class="user" v-if="userInfo !== null">
+     <breadcrumb>
+      <span slot="first">用户管理</span>
+      <span slot="second">用户列表</span>
+     </breadcrumb>
     <el-card class="box-card">
       <el-row :gutter="20">
         <el-col :span="8">
@@ -201,6 +205,7 @@
 <script>
 import Pagination from "../Pagination.vue";
 import EditUserInfo from "../EditUserInfo.vue";
+import Breadcrumb from '../Breadcrumb.vue'
 export default {
   data() {
     var checkemail = (rule, value, callback) => {
@@ -416,6 +421,7 @@ export default {
   components: {
     Pagination,
     EditUserInfo,
+    Breadcrumb
   },
 };
 </script>

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-16 17:22:46
- * @LastEditTime: 2021-11-23 11:47:24
+ * @LastEditTime: 2021-11-25 20:00:33
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \后台管理\vue_shop\src\router\index.js
@@ -14,9 +14,8 @@ import Welcome from '../components/Welcome'
 import User from '../components/user/User'
 import Rights from '../components/rights/Rights'
 import Roles from '../components/roles/Roles'
-import Categories from '../components/categories/Categories'
-import Params from '../components/categories/Params'
-
+import Cate from '../components/goods/Cate'
+import Params from '../components/goods/Params'
 Vue.use(VueRouter)
 
 const routes = [
@@ -50,8 +49,8 @@ const routes = [
         component:Rights
       },
       {
-        path:'/goods',
-        component:Categories
+        path:'/categories',
+        component:Cate
       },
       {
         path:'/params',

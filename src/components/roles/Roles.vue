@@ -1,13 +1,17 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-21 11:22:56
- * @LastEditTime: 2021-11-22 10:55:44
+ * @LastEditTime: 2021-11-23 20:24:15
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \后台管理\vue_shop\src\components\roles\Roles.vue
 -->
 <template>
   <div class="Roles">
+    <breadcrumb>
+      <span slot="first">权限管理</span>
+      <span slot="second">角色列表</span>
+     </breadcrumb>
     <el-card class="box-card">
       <el-button type="primary" @click="addRoles">添加用户</el-button>
       <el-table
@@ -139,10 +143,12 @@
 import "animate.css";
 import AddRoles from "./AddRoles.vue";
 import EditRoles from "./EditRoles.vue";
+import Breadcrumb from '../Breadcrumb.vue'
 export default {
   components: {
     AddRoles,
     EditRoles,
+    Breadcrumb
   },
   data() {
     return {

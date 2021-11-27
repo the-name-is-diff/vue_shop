@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-16 21:33:46
- * @LastEditTime: 2021-11-21 11:29:03
+ * @LastEditTime: 2021-11-23 18:38:17
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \后台管理\vue_shop\src\components\Home.vue
@@ -16,7 +16,6 @@
         <el-header> 
           <div class="left_header">
             <el-button icon="el-icon-s-fold" @click="showAside" ref="showBtn" class="showBtn"></el-button>
-            <breadcrumb></breadcrumb>
           </div>
           <el-button type="info" icon="el-icon-close" circle @click="outLogin" size="small"></el-button>
         </el-header>
