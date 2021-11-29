@@ -1,13 +1,18 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-25 20:00:00
- * @LastEditTime: 2021-11-27 17:10:47
+ * @LastEditTime: 2021-11-27 19:39:25
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \vue_shop\src\components\goods\Params.vue
 -->
 <template>
   <div class="params">
+     <el-breadcrumb separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>商品管理</el-breadcrumb-item>
+      <el-breadcrumb-item>分类参数</el-breadcrumb-item>
+    </el-breadcrumb>
     <el-card class="box-card">
       <el-alert
         title="只允许选择第三级分类的相关数据"
@@ -401,10 +406,14 @@ export default {
 </script>
 
 <style scoped>
+.el-breadcrumb{
+  margin: 15px;
+}
 .el-alert {
   margin-bottom: 20px;
 }
 .input-new-tag{
   width: 15%;
 }
+
 </style>
