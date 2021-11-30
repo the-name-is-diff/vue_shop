@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-16 17:22:46
- * @LastEditTime: 2021-11-25 20:00:33
+ * @LastEditTime: 2021-11-30 09:39:22
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \后台管理\vue_shop\src\router\index.js
@@ -16,6 +16,7 @@ import Rights from '../components/rights/Rights'
 import Roles from '../components/roles/Roles'
 import Cate from '../components/goods/Cate'
 import Params from '../components/goods/Params'
+import Order from '../components/order/Order'
 Vue.use(VueRouter)
 
 const routes = [
@@ -55,6 +56,10 @@ const routes = [
       {
         path:'/params',
         component:Params
+      },
+      {
+        path:'/orders',
+        component:Order
       }
     ]
   },
