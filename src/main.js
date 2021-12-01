@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-16 17:22:46
- * @LastEditTime: 2021-11-28 20:27:51
+ * @LastEditTime: 2021-12-01 20:27:28
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: \后台管理\vue_shop\src\main.js
@@ -19,7 +19,7 @@ import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
- 
+
 Vue.use(VueQuillEditor, /* { default global options } */)
 
 Vue.config.productionTip = false
